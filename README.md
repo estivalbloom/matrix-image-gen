@@ -29,3 +29,4 @@ Sample output with the above config:
 TODO: 
 - Animate the output
 - Allow the user to ensure certain strings are present
+- Allow custom atlases for symbols
