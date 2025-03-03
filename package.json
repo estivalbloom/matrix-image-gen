@@ -1,0 +1,35 @@
+{
+  "name": "matrix-image-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/matrix-gen.js",
+  "module": "./dist/matrix-gen.js",
+  "exports": {
+    ".": {
+      "import": "./dist/matrix-gen.js",
+      "require": "./dist/matrix-gen.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "Justin Niosi",
+  "license": "ISC",
+  "packageManager": "pnpm@10.5.2",
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "type": "module"
+}
