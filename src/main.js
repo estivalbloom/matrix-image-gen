@@ -120,7 +120,7 @@ function colorToRGBA(color) {
  * @property {number} n_strs - Number of strings to draw
  * @property {number} str_len - Length of each string
  * @property {number} n_passes - Number of times to draw background effects; offsetting y by 1 each time.
- * @property {PixelEffectFn} [effect_func] - Controls effects applied to pixels between draw passes. Defaults to 50% chance of decay to background color except on last pass.
+ * @property {PixelEffectFn} [effect_func] - Controls effects applied to pixels between draw passes. Defaults to an effect I like.
  */
 
 /**
@@ -141,16 +141,13 @@ function draw(ctx, opts) {
 	const str_len = opts.str_len;
 	const n_passes = opts.n_passes;
 	const bg_as_rgb = colorToRGBA(color_bg);
-	const pixelEffectFn = opts.effect_func || ((color, _x, _y, pass) => {
+	const pixelEffectFn = opts.effect_func || ((color, x, _y, pass) => {
 		if( pass == n_passes - 1 ) {
 			return color;
 		}
-		const rand = Math.random() > 0.5;
+		const threshold = (x % 2 == 0) ? 0.4 : 0.2;
+		const rand = Math.random() > threshold;
 		return rand ? color : bg_as_rgb;
-	});
-
-	console.log({
-		x, y, w, h, color_main, color_secondary, color_bg, n_strs, str_len, n_passes, pixelEffectFn
 	});
 
 	const c_width = Math.floor(w / char_size);
